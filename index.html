@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Digital Signal Processing Lab</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>Digital Signal Processing Lab</h1>
+
+    <p>
+        Nền tảng học tập, mô phỏng và phân tích DSP realtime hiện đại.
+        Tích hợp FFT, FIR, IIR, OFDM, SDR, BER, ADC/DAC, điều chế số,
+        xử lý tín hiệu âm thanh realtime và hệ sinh thái Python DSP chuyên nghiệp.
+    </p>
+
+    <div class="tech-stack">
+        <div class="tech-badge">Python</div>
+        <div class="tech-badge">NumPy</div>
+        <div class="tech-badge">SciPy</div>
+        <div class="tech-badge">PyQt / PySide</div>
+        <div class="tech-badge">GNU Radio</div>
+        <div class="tech-badge">RTL-SDR</div>
+        <div class="tech-badge">Realtime DSP</div>
+        <div class="tech-badge">AI Noise Reduction</div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="info-grid">
+        <div class="info-box">
+            <h3>Tần số lấy mẫu</h3>
+            <span id="sampleRate">44100 Hz</span>
+        </div>
+
+        <div class="info-box">
+            <h3>Kích thước FFT</h3>
+            <span>2048</span>
+        </div>
+
+        <div class="info-box">
+            <h3>Loại điều chế</h3>
+            <span id="modType">ASK</span>
+        </div>
+
+        <div class="info-box">
+            <h3>BER</h3>
+            <span id="berValue">0.0012</span>
+        </div>
+    </div>
+
+    <h2 class="big-title">Realtime DSP Modules</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>FFT Audio Spectrum Analyzer</h2>
+
+            <p>
+                Phân tích phổ tần số realtime bằng Fast Fourier Transform.
+            </p>
+
+            <div class="controls">
+                <button onclick="startMic()">Bật Microphone</button>
+            </div>
+
+            <canvas id="fftCanvas" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Bộ lọc FIR</h2>
+
+            <p>Mô phỏng bộ lọc FIR đơn giản.</p>
+
+            <label>Hệ số lọc FIR</label>
+            <input type="range" min="2" max="50" value="10" id="firRange">
+
+            <canvas id="firChart" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Bộ lọc IIR</h2>
+
+            <p>Mô phỏng bộ lọc IIR low-pass realtime.</p>
+
+            <label>Alpha</label>
+            <input type="range" min="1" max="99" value="20" id="iirRange">
+
+            <canvas id="iirChart" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Mini Oscilloscope</h2>
+
+            <canvas id="oscCanvas" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Mô phỏng ADC</h2>
+
+            <label>Số bit ADC</label>
+            <input type="range" min="2" max="12" value="8" id="adcBits">
+
+            <canvas id="adcChart" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Mô phỏng DAC</h2>
+
+            <canvas id="dacChart" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>BER Analysis</h2>
+
+            <label>SNR (dB)</label>
+            <input type="range" min="0" max="30" value="10" id="snrRange">
+
+            <canvas id="berChart" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>ASK / FSK / PSK Simulation</h2>
+
+            <div class="controls">
+                <button onclick="setModulation('ASK')">ASK</button>
+                <button onclick="setModulation('FSK')">FSK</button>
+                <button onclick="setModulation('PSK')">PSK</button>
+            </div>
+
+            <canvas id="modChart" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>OFDM Simulation</h2>
+
+            <canvas id="ofdmChart" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>Noise Analysis</h2>
+
+            <canvas id="noiseChart" height="220"></canvas>
+        </div>
+
+        <div class="card">
+            <h2>SDR WiFi Analyzer</h2>
+
+            <canvas id="wifiChart" height="220"></canvas>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
